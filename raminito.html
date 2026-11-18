@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>raminito | Ramen bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#D3241B;
+  --red-dark:#9E150F;
+  --off:#F6F3EE;
+  --ink:#2A1210;
+  --soft:#EAE4DA;
+  --display:'Bricolage Grotesque','Arial Black',sans-serif;
+  --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--off);color:var(--ink);line-height:1.6;font-size:17px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+header{position:sticky;top:0;z-index:20;background:var(--off);border-bottom:2px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--display);font-weight:800;font-size:26px;color:var(--red);letter-spacing:-.03em}
+.nav ul{display:flex;gap:28px;list-style:none;font-weight:500}
+.nav ul a:hover{color:var(--red)}
+.tray{background:var(--red);color:var(--off);border:0;border-radius:99px;padding:10px 18px;font:700 15px var(--body);cursor:pointer}
+.tray span{background:var(--off);color:var(--red);border-radius:99px;padding:1px 9px;margin-left:6px}
+
+/* HERO */
+.hero{background:var(--red);color:var(--off);overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px;padding-top:56px;padding-bottom:56px;min-height:620px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(64px,13vw,172px);line-height:.85;letter-spacing:-.05em}
+.hero p{max-width:420px;margin:28px 0 32px;font-size:19px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-block;border:2px solid var(--off);border-radius:99px;padding:13px 28px;font:700 16px var(--body);cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.fill{background:var(--off);color:var(--red)}
+.btn.line{background:transparent;color:var(--off)}
+.bowl{width:100%;max-width:440px;justify-self:center}
+.steam path{fill:none;stroke:var(--off);stroke-width:7;stroke-linecap:round;opacity:0;animation:steam 3.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.9s}
+.steam path:nth-child(3){animation-delay:1.8s}
+@keyframes steam{0%{opacity:0;transform:translateY(24px)}40%{opacity:.9}100%{opacity:0;transform:translateY(-26px)}}
+
+/* MARQUEE-FREE STRIP */
+.strip{border-bottom:2px solid var(--ink);background:var(--soft)}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.strip div{padding:26px 24px;border-left:2px solid var(--ink)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip b{font-family:var(--display);font-size:22px;display:block;color:var(--red)}
+
+/* SECTIONS */
+section{padding:84px 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,6vw,64px);line-height:1;letter-spacing:-.04em;color:var(--red);margin-bottom:12px}
+.lead{max-width:520px;margin-bottom:36px}
+
+/* MENU */
+.tabs{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.tab{border:2px solid var(--ink);background:transparent;border-radius:99px;padding:9px 22px;font:700 15px var(--body);cursor:pointer;color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--red);border-color:var(--red);color:var(--off)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.item{border:2px solid var(--ink);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;background:var(--off)}
+.item:nth-child(3n+1){background:var(--soft)}
+.item h3{font-family:var(--display);font-size:24px;letter-spacing:-.02em;line-height:1.1}
+.item p{font-size:15px;flex:1}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.price{font-weight:700;font-size:18px}
+.add{background:var(--red);color:var(--off);border:0;border-radius:99px;padding:8px 18px;font:700 14px var(--body);cursor:pointer}
+.add:hover{background:var(--red-dark)}
+
+/* VISIT */
+.visit{background:var(--ink);color:var(--off)}
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.visit h2{color:var(--off)}
+.hours{list-style:none;margin-top:18px}
+.hours li{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(246,243,238,.25)}
+form{display:grid;gap:14px}
+label{font-weight:500;font-size:15px}
+input,select{width:100%;margin-top:5px;padding:13px 14px;border-radius:12px;border:2px solid var(--off);background:transparent;color:var(--off);font:16px var(--body)}
+select option{color:var(--ink)}
+input:invalid:not(:placeholder-shown){border-color:#ff8f86}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit{background:var(--red);color:var(--off);border:0;border-radius:99px;padding:15px;font:700 17px var(--body);cursor:pointer}
+.submit:hover{background:var(--red-dark)}
+#msg{min-height:26px;font-weight:700}
+
+footer{background:var(--red);color:var(--off);padding:36px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer .logo{color:var(--off)}
+
+@media(max-width:820px){
+  .nav ul{display:none}
+  .hero .wrap,.visit .wrap{grid-template-columns:1fr}
+  .hero .wrap{min-height:0}
+  .bowl{max-width:300px}
+  .strip .wrap{grid-template-columns:1fr}
+  .strip div{border-left:0;border-top:2px solid var(--ink);padding-left:0}
+  .strip div:first-child{border-top:0}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .steam path{opacity:.7}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">raminito</a>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#book">Book a table</a></li>
+    </ul>
+    <button class="tray" id="trayBtn" aria-label="View your order">Your order<span id="count">0</span></button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>raminito</h1>
+        <p>Small ramen bar, big broth. Simmered for 14 hours, served in under 10 minutes.</p>
+        <div class="btns">
+          <a class="btn fill" href="#menu">See the menu</a>
+          <a class="btn line" href="#book">Book a table</a>
+        </div>
+      </div>
+      <svg class="bowl" viewBox="0 0 400 360" role="img" aria-label="A steaming bowl of ramen">
+        <g class="steam">
+          <path d="M140 110 q-20 -30 0 -55 q20 -25 0 -50"/>
+          <path d="M200 110 q-20 -30 0 -55 q20 -25 0 -50"/>
+          <path d="M260 110 q-20 -30 0 -55 q20 -25 0 -50"/>
+        </g>
+        <ellipse cx="200" cy="170" rx="165" ry="42" fill="#F6F3EE"/>
+        <ellipse cx="200" cy="170" rx="145" ry="32" fill="#E9B04A"/>
+        <path d="M95 168 q25 -14 50 0 t50 0 t50 0 t50 0" fill="none" stroke="#F6F3EE" stroke-width="5" stroke-linecap="round"/>
+        <path d="M110 180 q25 -12 50 0 t50 0 t50 0 t30 0" fill="none" stroke="#F6F3EE" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="160" cy="166" r="20" fill="#F6F3EE"/><circle cx="160" cy="166" r="9" fill="#F0A020"/>
+        <circle cx="245" cy="172" r="12" fill="#9E150F"/><circle cx="270" cy="164" r="8" fill="#2A1210"/>
+        <path d="M60 180 Q80 330 200 335 Q320 330 340 180 Z" fill="#F6F3EE"/>
+        <path d="M82 230 Q200 262 318 230" fill="none" stroke="#D3241B" stroke-width="10"/>
+        <path d="M92 266 Q200 298 308 266" fill="none" stroke="#D3241B" stroke-width="10"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="wrap">
+      <div style="border-left:0"><b>14-hour broth</b>Pork and chicken bones, simmered overnight.</div>
+      <div><b>Fresh noodles</b>Cooked to order, never pre-boiled.</div>
+      <div><b>Open late</b>Kitchen runs until 1 AM on weekends.</div>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>The menu</h2>
+      <p class="lead">Pick a bowl, add a side, and tap Add to build your order.</p>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="items" id="items"></div>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div>
+        <h2>Come hungry</h2>
+        <p>Seats are limited, so booking a table is the best way to skip the queue.</p>
+        <ul class="hours">
+          <li><span>Sun – Wed</span><span>1 PM – 11 PM</span></li>
+          <li><span>Thu – Sat</span><span>1 PM – 1 AM</span></li>
+          <li><span>Address</span><span>Your street, Your city</span></li>
+          <li><span>Phone</span><span>+20 000 000 0000</span></li>
+        </ul>
+      </div>
+      <form id="book" novalidate>
+        <label>Name<input type="text" id="name" placeholder=" " required></label>
+        <div class="two">
+          <label>Date<input type="date" id="date" required></label>
+          <label>Guests
+            <select id="guests">
+              <option>1</option><option selected>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6+</option>
+            </select>
+          </label>
+        </div>
+        <label>Phone<input type="tel" id="phone" placeholder="01XXXXXXXXX" required></label>
+        <button class="submit" type="submit">Book a table</button>
+        <div id="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo">raminito</span>
+    <span>&copy; <span id="year"></span> raminito. Made with broth.</span>
+  </div>
+</footer>
+
+<script>
+const MENU = {
+  Ramen: [
+    {n:'Classic Tonkotsu', d:'Creamy pork broth, chashu, soft egg, scallion.', p:220},
+    {n:'Spicy Red Miso', d:'Chili miso broth, minced chicken, corn, nori.', p:210},
+    {n:'Shoyu Chicken', d:'Light soy broth, grilled chicken, bamboo shoots.', p:195},
+    {n:'Veggie Garden', d:'Mushroom dashi, tofu, bok choy, sesame.', p:185}
+  ],
+  Sides: [
+    {n:'Gyoza (6 pcs)', d:'Pan-fried dumplings with ponzu dip.', p:110},
+    {n:'Karaage', d:'Crispy Japanese fried chicken, lemon mayo.', p:125},
+    {n:'Ajitama Egg', d:'Marinated soft-boiled egg.', p:35}
+  ],
+  Drinks: [
+    {n:'Iced Matcha', d:'Ceremonial matcha over ice and milk.', p:80},
+    {n:'Ramune Soda', d:'Classic Japanese marble soda.', p:65},
+    {n:'Hot Genmaicha', d:'Roasted rice green tea.', p:45}
+  ]
+};
+
+const tabsEl = document.getElementById('tabs');
+const itemsEl = document.getElementById('items');
+const countEl = document.getElementById('count');
+let order = [];
+let current = 'Ramen';
+
+function renderTabs(){
+  tabsEl.innerHTML = '';
+  Object.keys(MENU).forEach(cat => {
+    const b = document.createElement('button');
+    b.className = 'tab';
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-selected', cat === current);
+    b.textContent = cat;
+    b.onclick = () => { current = cat; renderTabs(); renderItems(); };
+    tabsEl.appendChild(b);
+  });
+}
+
+function renderItems(){
+  itemsEl.innerHTML = '';
+  MENU[current].forEach(it => {
+    const el = document.createElement('article');
+    el.className = 'item';
+    el.innerHTML = `<h3>${it.n}</h3><p>${it.d}</p>
+      <div class="row"><span class="price">${it.p} EGP</span><button class="add">Add</button></div>`;
+    el.querySelector('.add').onclick = e => {
+      order.push(it);
+      countEl.textContent = order.length;
+      e.target.textContent = 'Added';
+      setTimeout(() => e.target.textContent = 'Add', 900);
+    };
+    itemsEl.appendChild(el);
+  });
+}
+
+document.getElementById('trayBtn').onclick = () => {
+  if(!order.length){ alert('Your order is empty. Add something from the menu.'); return; }
+  const total = order.reduce((s,i) => s + i.p, 0);
+  alert(order.map(i => i.n + ' - ' + i.p + ' EGP').join('\n') + '\n\nTotal: ' + total + ' EGP');
+};
+
+// Booking form
+const form = document.getElementById('book');
+const msg = document.getElementById('msg');
+const dateEl = document.getElementById('date');
+dateEl.min = new Date().toISOString().split('T')[0];
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if(!name){ msg.textContent = 'Enter your name.'; return; }
+  if(!dateEl.value){ msg.textContent = 'Pick a date.'; return; }
+  if(!/^01[0-9]{9}$/.test(phone)){ msg.textContent = 'Enter an 11-digit phone number starting with 01.'; return; }
+  msg.textContent = 'Table booked for ' + name + ' on ' + dateEl.value + '. See you soon!';
+  form.reset();
+  dateEl.min = new Date().toISOString().split('T')[0];
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+renderTabs();
+renderItems();
+</script>
+</body>
+</html>
